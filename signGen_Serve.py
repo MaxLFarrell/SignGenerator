@@ -1,13 +1,13 @@
 import tornado.ioloop
 import tornado.web
-import lennys
+import sign_builder
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("static/index.html")
     def post(self):
         text = self.get_body_argument("text")
-        name = lennys.imbuild(text)
+        name = sign_builder.imbuild(text)
         self.render("static/imageShow.html", name = name)
 def make_app():
     return tornado.web.Application([
